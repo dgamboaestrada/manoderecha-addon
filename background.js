@@ -1,5 +1,4 @@
 $(function(){
-
     (function($) {
         $('.cfData:contains("[DD]")').css('background-color', 'yellowgreen');
         $('.cfData:contains("[DP]")').css('background-color', 'yellowgreen');
@@ -292,6 +291,17 @@ $(function(){
         $('.ntRevission').text("");
         $('.ntRevissionLess24h').append(revissionCountLess24h);
         $('.ntRevissionMore48h').append(revissionCountMore24h);
-    }, 1000);
 
+        //Add task id for each task in home page.
+        if ( $('.btSectionTitle.taskid').length == 0 ) {
+            $('.btWrapper').children('.btDeliverableBlock').prepend('<span class="btDeliverable taskid">' + $('.btWrapper').attr('data-task-id') + '</span>')
+            $('.btWrapper').children('.btDeliverableBlock').prepend('<span class="btSectionTitle taskid">Task ID:</span>')
+        }
+        //Switch background color between each task line in home page.
+        $('.btWrapper').each( function( index ) {
+            if ( index % 2 == 0 ) {
+                $(this).attr('style', 'background-color:#f6f8fa');
+            }
+        });
+    }, 1000);
 });
